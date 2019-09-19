@@ -1,9 +1,7 @@
-some features are still in development.
-
 # Bysy
 #### -read busy
 
-A Python Time logger. Writes to JSON database, to be later used in self-analysis.
+Self-management Time logging tool written in Python. Writes to a JSON database, to be later used in self-analysis.
 
 The way you can record and analyse the data is up to you. Although I provide a very simple and
 effective example at the bottom.
