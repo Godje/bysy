@@ -10,7 +10,7 @@
 # of code being performant. 
 #
 # It's a very short script that will run each time
-# you execute the command, so the performance and memory consumption doesn't
+# you execute the command, so the performance and memory consumption don't
 # really matter here
 
 import sys;
@@ -32,12 +32,18 @@ def main():
 			'start': start,
 			'stop': stop,
 			'list': loglist,
-			'help': printhelp
+			'help': printhelp,
+			'time': echotime,
+			'delete': deletelog
 		}[m];
+
 	if( argLength > 1 ):
 		method( args[1] )();
 	else:
 		printhelp();
+
+def current_time():
+	return datetime.now().strftime('%Y-%m-%d %H:%M:%S');
 
 def start():
 	def last_id():
@@ -68,7 +74,6 @@ def start():
 			}
 
 	db.append(entry);
-	print json.dumps(db);
 
 	return_message = """{5}\
 	Starting a log:{6}
@@ -106,20 +111,67 @@ def stop():
 def loglist():
 	print "Here's the list:";
 	template = """{0} | {1} | {2} | {3} | {4} | {5}""";
-	for entry in db:
+	for entry in reversed(db):
 		print template.format(entry['i'], entry['s'], entry['p'], entry['d'], entry['b'], entry['e'])
 
 def printhelp():
 	help_string = """{0}\
-	Available methods:{1}
-		start stop list time"""
 
+Available methods:{1}
+
+	{0}start{1}   - (Sector, Project, Description) starts a new Log
+	{0}stop{1}    - stops the last log
+	{0}list{1}    - lists logs
+	{0}time{1}    - tells how much time has passed since the last log
+	{0}delete{1}  - delets a selected log
+	{0}help{1}    - displays this help message
+        """
 	print help_string.format(txtmodif.BOLD, txtmodif.NORMAL)
+
+def echotime():
+	time_now = current_time();
+	last_item = db[-1];
+
+	if(len(db) == 0):
+		print "Database is empty";
+		return;
+
+	if(last_item['e'] != ""):
+		print "No running jobs";
+		return;
+	else:
+		time_then = last_item['b'];
+		fmt = '%Y-%m-%d %H:%M:%S';
+		tdelta = datetime.strptime(time_now, fmt) - datetime.strptime(time_then, fmt);
+		output = str(tdelta);
+		print output;
+
+def deletelog():
+	if(len(db) == 0):
+		print "Database is empty";
+		return;
+
+	if( argLength < 3 ):
+		print "Not enough arguments provided";
+		return;
+	else:
+		item_index = find(db, 'i', args[2]);
+		if(item_index != None):
+			del db[item_index];
+			save();
+		else:
+			print "No item with such id";
+			return;
+
+def find(lst, key, value):
+	for entry in lst:
+		if entry[key] == int(value):
+			return lst.index(entry);
+	return None;
+
 
 def save():
 	with open(dbfilename, 'w') as dbfile:
 		json.dump(db, dbfile)
 
 main();
-
-# Don't forget to read over JSON stuff
