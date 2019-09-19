@@ -28,13 +28,13 @@ argLength = len(args);
 def main():
 	def method(m):
 		return {
-			'start': start,
-			'stop': stop,
-			'list': loglist,
-			'help': printhelp,
-			'time': echotime,
-			'delete': deletelog
-		}[m];
+				'start': start,
+				'stop': stop,
+				'list': loglist,
+				'help': printhelp,
+				'time': echotime,
+				'delete': deletelog
+				}[m];
 
 	if( argLength > 1 ):
 		method( args[1] )();
@@ -58,28 +58,32 @@ def start():
 		print "There is another Log running at the moment";
 		return;
 
-	if( argLength != 5 ):
+	if( argLength < 5 ):
 		print "Not enough arguments";
 		return;
-	
+
 	current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S');
 	entry = {
 			'i': last_id() + 1,
 			's': args[2],
 			'p': args[3],
 			'd': args[4],
+			'c': '',
 			'b': current_time,
 			'e': "",
-			}
+			};
+	if( argLength == 6 ):
+		entry['c'] = args[5]
 
 	db.append(entry);
 
 	return_message = """{5}\
-	Starting a log:{6}
+			Starting a log:{6}
 		id: {5}{0}{6}
 		sector: {5}{1}{6}
 		project: {5}{2}{6}
 		description: {5}{3}{6}
+				{7}
 		start_time: {5}{4}"""
 	print return_message.format( 
 			entry['i'],		# {0}
@@ -87,8 +91,9 @@ def start():
 			entry['p'],		# {2}
 			entry['d'],		# {3}
 			entry['b'],		# {4}
-			txtmodif.BOLD,	# {5} //first text modifier
-			txtmodif.NORMAL	# {6} //second text modifier
+			txtmodif.BOLD,			# {5} //first text modifier
+			txtmodif.NORMAL,		# {6} //second text modifier
+			"comments: " + str(entry['c'])
 			)
 
 	save();
@@ -108,9 +113,12 @@ def stop():
 	save();
 
 def loglist():
+	reversed_list = db[::-1];
+	if( argLength == 3 and int(args[2]) > 0):
+		reversed_list = reversed_list[ :int(args[2]) ];
 	print "Here's the list:";
 	template = """{0} | {1} | {2} | {3} | {4} | {5}""";
-	for entry in reversed(db):
+	for entry in reversed_list:
 		print template.format(entry['i'], entry['s'], entry['p'], entry['d'], entry['b'], entry['e'])
 
 def printhelp():
@@ -119,12 +127,12 @@ def printhelp():
 Available methods:{1}
 
 	{0}start{1}   - (Sector, Project, Description) starts a new Log
-	{0}stop{1}    - stops the last log
-	{0}list{1}    - lists logs
-	{0}time{1}    - tells how much time has passed since the last log
+	{0}stop{1}	  - stops the last log
+	{0}list{1}	  - lists logs
+	{0}time{1}	  - tells how much time has passed since the last log
 	{0}delete{1}  - delets a selected log
-	{0}help{1}    - displays this help message
-        """
+	{0}help{1}	  - displays this help message
+		"""
 	print help_string.format(txtmodif.BOLD, txtmodif.NORMAL)
 
 def echotime():
@@ -174,8 +182,8 @@ def save():
 		json.dump(db, dbfile)
 
 class txtmodif:
-    NORMAL = '\033[0m'
-    BOLD = '\033[1m'
-    WARNING = '\033[91m'
+	NORMAL = '\033[0m'
+	BOLD = '\033[1m'
+	WARNING = '\033[91m'
 
 main();
