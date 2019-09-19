@@ -17,7 +17,6 @@ import sys;
 import json;
 from datetime import time;
 from datetime import datetime;
-from textformat import txtmodif;
 
 dbfilename = "db.json";
 with open(dbfilename) as dbfile:
@@ -173,5 +172,10 @@ def find(lst, key, value):
 def save():
 	with open(dbfilename, 'w') as dbfile:
 		json.dump(db, dbfile)
+
+class txtmodif:
+    NORMAL = '\033[0m'
+    BOLD = '\033[1m'
+    WARNING = '\033[91m'
 
 main();
