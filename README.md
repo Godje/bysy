@@ -1,3 +1,5 @@
+some features are still in development.
+
 # Bysy
 #### -read busy
 
