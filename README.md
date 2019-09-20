@@ -1,6 +1,7 @@
 # Bysy
 #### -read busy
 
+
 Self-management Time logging tool written in Python. Writes to a JSON database, to be later used in self-analysis.
 
 The way you can record and analyse the data is up to you. Although I provide a very simple and
@@ -8,7 +9,10 @@ effective example at the bottom.
 
 Clearly inspired by **Log** by Josh Avanier
 
-### Usage
+- [Usage](https://github.com/Godje/bysy#usage)
+- [Entry Structure](https://github.com/Godje/bysy#entry-structure-ideas)
+
+## Usage
 
 `*` means required input
 
@@ -23,7 +27,7 @@ Clearly inspired by **Log** by Josh Avanier
 - **time**
 	- tells how much time have you been busy with the last entry
 
-### Entry Structure ideas
+## Entry Structure ideas
 
 **sector** - What task are you performing 
 
