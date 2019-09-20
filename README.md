@@ -9,6 +9,7 @@ effective example at the bottom.
 
 Clearly inspired by **Log** by Josh Avanier
 
+**Navigation**
 - [Usage](https://github.com/Godje/bysy#usage)
 - [Entry Structure](https://github.com/Godje/bysy#entry-structure-ideas)
 
@@ -26,6 +27,27 @@ Clearly inspired by **Log** by Josh Avanier
 	- lists the `amount` of last entries
 - **time**
 	- tells how much time have you been busy with the last entry
+
+**Example commands:**
+```
+$ bysy.py start "Dev" "Bysy" "Fixing bugs"
+<output>
+$ bysy.py stop
+
+$ bysy.py start "Dev" "Bysy" "Fixing bugs" "finishing up on Issue #3"
+<output>
+
+$ bysy.py list
+2 | Dev | Bysy | Fixing bugs | <start-time> |
+1 | Dev | Bysy | Fixing bugs | <start-time> | <end-time>
+
+$ bysy.py delete 1
+
+$ bysy.py time #time since the Entry #2 started
+0:04:00 
+```
+
+Analysing scripts and such will come later after a stable Core is done.
 
 ## Entry Structure ideas
 
