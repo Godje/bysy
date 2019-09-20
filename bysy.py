@@ -5,7 +5,7 @@
 # Literally my first Python program, so don't be surprised for noob memory
 # management
 #
-# So don't be surprised that I have a bunch of Guard conditional statements
+# Don't be surprised that I have a bunch of Guard conditional statements
 # I use every hack that will make the code look nice and readable, instead
 # of code being performant. 
 #
@@ -15,13 +15,22 @@
 
 import sys;
 import json;
-from datetime import time;
 from datetime import datetime;
 
-dbfilename = "db.json";
-with open(dbfilename) as dbfile:
-	db = json.loads(dbfile.read());
+## Pinging for database
 
+dbfilename = "db.json";
+
+try:
+	with open(dbfilename) as dbfile:
+		db = json.loads(dbfile.read());
+except:
+	print "Database doesn't exist.";
+	print "To create a database execute the following shell command:";
+	print "echo \"[]\" > db.json";
+	sys.exit();
+
+## Checking for arguments
 args = sys.argv;
 argLength = len(args);
 
@@ -33,7 +42,7 @@ def main():
 				'list': loglist,
 				'help': printhelp,
 				'time': echotime,
-				'delete': deletelog
+				'delete': deleteentry
 				}[m];
 
 	if( argLength > 1 ):
@@ -41,9 +50,7 @@ def main():
 	else:
 		printhelp();
 
-def current_time():
-	return datetime.now().strftime('%Y-%m-%d %H:%M:%S');
-
+## Main methods
 def start():
 	def last_id():
 		max_id = 0;
@@ -136,24 +143,23 @@ Available methods:{1}
 	print help_string.format(txtmodif.BOLD, txtmodif.NORMAL)
 
 def echotime():
-	time_now = current_time();
-	last_item = db[-1];
-
 	if(len(db) == 0):
 		print "Database is empty";
 		return;
+	last_item = db[-1];
 
 	if(last_item['e'] != ""):
 		print "No running jobs";
 		return;
 	else:
+		time_now = current_time();
 		time_then = last_item['b'];
 		fmt = '%Y-%m-%d %H:%M:%S';
 		tdelta = datetime.strptime(time_now, fmt) - datetime.strptime(time_then, fmt);
 		output = str(tdelta);
 		print output;
 
-def deletelog():
+def deleteentry():
 	if(len(db) == 0):
 		print "Database is empty";
 		return;
@@ -170,12 +176,15 @@ def deletelog():
 			print "No item with such id";
 			return;
 
+## Helper functions
+def current_time():
+	return datetime.now().strftime('%Y-%m-%d %H:%M:%S');
+
 def find(lst, key, value):
 	for entry in lst:
 		if entry[key] == int(value):
 			return lst.index(entry);
 	return None;
-
 
 def save():
 	with open(dbfilename, 'w') as dbfile:
