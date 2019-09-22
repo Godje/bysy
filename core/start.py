@@ -1,5 +1,12 @@
+import sys;
+from DB import DB;
+
+args = sys.argv;
+argLength = len(args);
+
 ## Start function
 def start():
+	db = DB.load();
 	def last_id():
 		max_id = 0;
 		if(len(db) == 0):
@@ -51,4 +58,4 @@ def start():
 			"comments: " + str(entry['c'])
 			)
 
-	save();
+	DB.save(db);

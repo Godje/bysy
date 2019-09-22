@@ -14,7 +14,7 @@
 # really matter here
 
 import sys;
-import json;
+
 from datetime import datetime;
 
 ## Modules
@@ -24,18 +24,6 @@ from core.loglist import loglist;
 from core.printhelp import printhelp;
 from core.echotime import echotime;
 from core.deleteentry import deleteentry;
-
-## Pinging for database
-dbfilename = "db.json";
-
-try:
-	with open(dbfilename) as dbfile:
-		db = json.loads(dbfile.read());
-except:
-	print "Database doesn't exist.";
-	print "To create a database execute the following shell command:";
-	print "echo \"[]\" > db.json";
-	sys.exit();
 
 ## Checking for arguments
 args = sys.argv;
@@ -66,10 +54,5 @@ def find(lst, key, value):
 		if entry[key] == int(value):
 			return lst.index(entry);
 	return None;
-
-def save():
-	with open(dbfilename, 'w') as dbfile:
-		json.dump(db, dbfile)
-
 
 main();
