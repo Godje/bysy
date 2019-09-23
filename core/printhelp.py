@@ -4,7 +4,7 @@ class txtmodif:
 	WARNING = '\033[91m'
 
 ## Print help function
-def printhelp():
+def printhelp(args):
 	help_string = """{0}\
 
 Available methods:{1}

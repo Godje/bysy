@@ -1,11 +1,12 @@
 import sys;
 import json;
 
+dbfilename = "db.json";
+
 class DB:
 	@staticmethod
 	def load():
 		db = [];
-		dbfilename = "db.json";
 		try:
 			with open(dbfilename) as dbfile:
 				db = json.loads(dbfile.read());

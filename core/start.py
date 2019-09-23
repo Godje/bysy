@@ -1,12 +1,16 @@
-import sys;
 from DB import DB;
-
-args = sys.argv;
-argLength = len(args);
+from datetime import datetime;
 
 ## Start function
-def start():
+def start(args):
+	argLength = len(args);
+
+	if( argLength < 3 ):
+		print "Not enough arguments";
+		return;
+
 	db = DB.load();
+
 	def last_id():
 		max_id = 0;
 		if(len(db) == 0):
@@ -20,22 +24,19 @@ def start():
 		print "There is another Log running at the moment";
 		return;
 
-	if( argLength < 5 ):
-		print "Not enough arguments";
-		return;
 
 	current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S');
 	entry = {
 			'i': last_id() + 1,
-			's': args[2],
-			'p': args[3],
-			'd': args[4],
+			's': args[0],
+			'p': args[1],
+			'd': args[2],
 			'c': '',
 			'b': current_time,
 			'e': "",
 			};
-	if( argLength == 6 ):
-		entry['c'] = args[5]
+	if( argLength == 4 ):
+		entry['c'] = args[3]
 
 	db.append(entry);
 
@@ -59,3 +60,8 @@ def start():
 			)
 
 	DB.save(db);
+
+class txtmodif:
+	NORMAL = '\033[0m'
+	BOLD = '\033[1m'
+	WARNING = '\033[91m'

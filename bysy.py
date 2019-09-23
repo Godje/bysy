@@ -15,8 +15,6 @@
 
 import sys;
 
-from datetime import datetime;
-
 ## Modules
 from core.start import start;
 from core.stop import stop;
@@ -41,18 +39,8 @@ def main():
 				}[m];
 
 	if( argLength > 1 ):
-		method( args[1] )();
+		method( args[1] )(args[2:]);
 	else:
 		printhelp();
-
-## Helper functions
-def current_time():
-	return datetime.now().strftime('%Y-%m-%d %H:%M:%S');
-
-def find(lst, key, value):
-	for entry in lst:
-		if entry[key] == int(value):
-			return lst.index(entry);
-	return None;
 
 main();

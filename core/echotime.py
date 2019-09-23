@@ -1,5 +1,10 @@
+from DB import DB;
+from datetime import datetime;
+
 ## Echo time function
-def echotime():
+def echotime(args):
+	db = DB.load()
+
 	if(len(db) == 0):
 		print "Database is empty";
 		return;
@@ -9,7 +14,7 @@ def echotime():
 		print "No running jobs";
 		return;
 	else:
-		time_now = current_time();
+		time_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S');
 		time_then = last_item['b'];
 		fmt = '%Y-%m-%d %H:%M:%S';
 		tdelta = datetime.strptime(time_now, fmt) - datetime.strptime(time_then, fmt);

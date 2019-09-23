@@ -1,4 +1,10 @@
-def loglist():
+from DB import DB;
+
+def loglist(args):
+	argLength = len(args);
+
+	db = DB.load();
+
 	reversed_list = db[::-1];
 	if( argLength == 3 and int(args[2]) > 0):
 		reversed_list = reversed_list[ :int(args[2]) ];
