@@ -41,6 +41,6 @@ def main():
 	if( argLength > 1 ):
 		method( args[1] )(args[2:]);
 	else:
-		printhelp();
+		printhelp(0);
 
 main();

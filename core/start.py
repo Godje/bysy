@@ -35,13 +35,13 @@ def start(args):
 			'b': current_time,
 			'e': "",
 			};
+
 	if( argLength == 4 ):
 		entry['c'] = args[3]
 
 	db.append(entry);
 
-	return_message = """{5}\
-
+	return_message = """{5}
 Starting a log:{6}
 	id: {5}{0}{6}
 	sector: {5}{1}{6}
