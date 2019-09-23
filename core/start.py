@@ -41,13 +41,15 @@ def start(args):
 	db.append(entry);
 
 	return_message = """{5}\
-			Starting a log:{6}
-		id: {5}{0}{6}
-		sector: {5}{1}{6}
-		project: {5}{2}{6}
-		description: {5}{3}{6}
-				{7}
-		start_time: {5}{4}"""
+
+Starting a log:{6}
+	id: {5}{0}{6}
+	sector: {5}{1}{6}
+	project: {5}{2}{6}
+	description: {5}{3}{6}
+	{7}
+	start_time: {5}{4}
+	"""
 	print return_message.format( 
 			entry['i'],		# {0}
 			entry['s'],		# {1}
