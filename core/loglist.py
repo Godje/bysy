@@ -8,8 +8,8 @@ def loglist(args):
 	db = DB.load();
 
 	reversed_list = db[::-1];
-	if( argLength == 3 and int(args[2]) > 0):
-		reversed_list = reversed_list[ :int(args[2]) ];
+	if( argLength == 1 ):
+		reversed_list = reversed_list[ :int(args[0]) ];
 	print "Here's the list:";
 	template = """{0} | {1} | {2} | {3} | {4}""";
 	for entry in reversed_list:
