@@ -1,10 +1,6 @@
 ## Stop function
-import sys;
 from DB import DB;
-from datetime import datetime;
-
-args = sys.argv;
-argLength = len(args);
+from TIME import currentTime;
 
 def stop(args):
 	db = DB.load();
@@ -12,7 +8,7 @@ def stop(args):
 		print "Database is empty";
 		return;
 	last_item = db[-1];
-	curr_time = current_time();
+	curr_time = currentTime();
 
 	if( last_item['e'] == '' ):
 		last_item['e'] = curr_time;
@@ -20,6 +16,3 @@ def stop(args):
 		print "Last job is completed. No jobs to stop";
 
 	DB.save(db);
-
-def current_time():
-	return datetime.now().strftime('%Y-%m-%d %H:%M:%S');

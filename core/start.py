@@ -1,5 +1,5 @@
 from DB import DB;
-from datetime import datetime;
+from TIME import currentTime;
 
 ## Start function
 def start(args):
@@ -25,7 +25,7 @@ def start(args):
 		return;
 
 
-	current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S');
+	current_time = currentTime();
 	entry = {
 			'i': last_id() + 1,
 			's': args[0],

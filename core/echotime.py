@@ -1,5 +1,6 @@
 from DB import DB;
-from datetime import datetime;
+from TIME import currentTime;
+from TIME import timeDifference;
 
 ## Echo time function
 def echotime(args):
@@ -14,9 +15,6 @@ def echotime(args):
 		print "No running jobs";
 		return;
 	else:
-		time_now = datetime.now().strftime('%Y-%m-%d %H:%M:%S');
+		time_now = currentTime();
 		time_then = last_item['b'];
-		fmt = '%Y-%m-%d %H:%M:%S';
-		tdelta = datetime.strptime(time_now, fmt) - datetime.strptime(time_then, fmt);
-		output = str(tdelta);
-		print output;
+		print timeDifference(time_now, time_then);
