@@ -9,25 +9,16 @@ def start(args):
 		print "Not enough arguments";
 		return;
 
-	db = DB.load();
+	db = DB().Load();
 
-	def last_id():
-		max_id = 0;
-		if(len(db) == 0):
-			return 0;
-		for entry in db:
-			if (entry['i'] > max_id):
-				max_id = entry['i']
-		return max_id;
-
-	if( len(db) != 0 and db[-1]['e'] == "" ):
+	if( len(db.database) != 0 and db.LastItem()['e'] == "" ):
 		print "There is another Log running at the moment";
 		return;
 
 
 	current_time = currentTime();
 	entry = {
-			'i': last_id() + 1,
+			'i': db.LastItem()['i'] + 1,
 			's': args[0],
 			'p': args[1],
 			'd': args[2],
@@ -39,7 +30,7 @@ def start(args):
 	if( argLength == 4 ):
 		entry['c'] = args[3]
 
-	db.append(entry);
+	db.database.append(entry);
 
 	return_message = """{5}
 Starting a log:{6}
@@ -61,7 +52,7 @@ Starting a log:{6}
 			"comments: " + str(entry['c'])
 			)
 
-	DB.save(db);
+	db.Save();
 
 class txtmodif:
 	NORMAL = '\033[0m'

@@ -22,6 +22,7 @@ from core.loglist import loglist;
 from core.printhelp import printhelp;
 from core.echotime import echotime;
 from core.deleteentry import deleteentry;
+from core.resume import resume;
 
 ## Checking for arguments
 args = sys.argv;
@@ -31,6 +32,7 @@ def main():
 	def method(m):
 		return {
 				'start': start,
+				'resume': resume,
 				'stop': stop,
 				'list': loglist,
 				'help': printhelp,
@@ -39,7 +41,7 @@ def main():
 				}[m];
 
 	if( argLength > 1 ):
-		method( args[1] )(args[2:]);
+		method( args[1].lower() )(args[2:]);
 	else:
 		printhelp(0);
 

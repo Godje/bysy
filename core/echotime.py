@@ -4,12 +4,12 @@ from TIME import timeDifference;
 
 ## Echo time function
 def echotime(args):
-	db = DB.load()
+	db = DB().Load()
 
-	if(len(db) == 0):
+	if( db.Empty() ):
 		print "Database is empty";
 		return;
-	last_item = db[-1];
+	last_item = db.LastItem();
 
 	if(last_item['e'] != ""):
 		print "No running jobs";
