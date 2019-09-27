@@ -12,4 +12,3 @@ def resume(args):
 	if(entry != None):
 		startArgs = [entry['s'], entry['p'], entry['d']]
 		start(startArgs);
-	print entry;

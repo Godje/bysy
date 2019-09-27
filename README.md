@@ -27,6 +27,8 @@ Clearly inspired by **Log** by Josh Avanier
 	- lists the `amount` of last entries
 - **time**
 	- tells how much time have you been busy with the last entry
+- **resume** | `<id>`
+	-	resumes the task, or the entry at the `id` you type in. By resuming, means start it again.
 
 **Example commands:**
 ```
