@@ -2,6 +2,8 @@
 from DB import DB;
 from TIME import currentTime;
 
+from echotime import echotime;
+
 def stop(args):
 	db = DB().Load();
 	if( db.Empty() ):
@@ -13,6 +15,7 @@ def stop(args):
 
 	if( last_item['e'] == '' ):
 		last_item['e'] = curr_time;
+		print "Stopped. Time elapsed: {}".format( echotime(args, returnValue=True) );
 	else:
 		print "Last job is completed. No jobs to stop";
 

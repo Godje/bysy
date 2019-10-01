@@ -3,7 +3,7 @@ from TIME import currentTime;
 from TIME import timeDifference;
 
 ## Echo time function
-def echotime(args):
+def echotime(args, returnValue=False):
 	db = DB().Load()
 
 	if( db.Empty() ):
@@ -17,4 +17,9 @@ def echotime(args):
 	else:
 		time_now = currentTime();
 		time_then = last_item['b'];
-		print timeDifference(time_now, time_then);
+		time_difference = timeDifference(time_now, time_then);
+
+	if(returnValue==True):
+		return time_difference;
+	else:
+		print time_difference;
