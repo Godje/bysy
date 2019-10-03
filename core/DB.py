@@ -39,6 +39,8 @@ class DB:
 	def lastIndex(db=None):
 		if(db == None):
 			db = DB.load();
+		if(len(db) == 0):
+			return 0;
 		idlist = [];
 		for entry in db:
 			idlist.append((
@@ -52,6 +54,8 @@ class DB:
 	def lastItem(db=None):
 		if(db == None):
 			db = DB.load();
+		if(len(db) == 0):
+			return {'i': 0};
 		return db[ DB.lastIndex(db) ];
 
 	@staticmethod

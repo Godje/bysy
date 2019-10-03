@@ -6,7 +6,9 @@ def loglist(args):
 	argLength = len(args);
 
 	db = DB.load();
-
+	if(len(db) == 0):
+		print "Database is empty";
+		return;
 	reversed_list = db[::-1];
 	if( argLength == 1 ):
 		reversed_list = reversed_list[ :int(args[0]) ];
