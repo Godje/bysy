@@ -35,6 +35,7 @@ def main():
 				'resume': resume,
 				'stop': stop,
 				'list': loglist,
+				'log': loglist,
 				'help': printhelp,
 				'time': echotime,
 				'delete': deleteentry
