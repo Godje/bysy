@@ -23,6 +23,7 @@ from core.printhelp import printhelp;
 from core.echotime import echotime;
 from core.deleteentry import deleteentry;
 from core.resume import resume;
+from core.configure import configure;
 
 ## Checking for arguments
 args = sys.argv;
@@ -33,12 +34,18 @@ def main():
 		return {
 				'start': start,
 				'resume': resume,
+
+				'pause': stop,
 				'stop': stop,
+
 				'list': loglist,
+				'ls': loglist,
 				'log': loglist,
+
 				'help': printhelp,
 				'time': echotime,
-				'delete': deleteentry
+				'delete': deleteentry,
+				'config': configure
 				}[m];
 
 	if( argLength > 1 ):
