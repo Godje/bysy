@@ -6,6 +6,7 @@ dbfilename = "db.json";
 
 class DB:
 	database = [];
+	config = {};
 
 	@staticmethod
 	def load():
@@ -22,14 +23,21 @@ class DB:
 		return db;
 
 	@staticmethod
-	def save(db):
+	def save(*args):
+		var1 = DB.load();
+
+		db = args[0] if len(args) > 0 else [];
+		config = args[1] if len(args) > 1 else var1['config'];
+
+		var1['db'] = db;
+		var1['config'] = config;
 		with open(dbfilename, 'w') as dbfile:
-			json.dump(db, dbfile);
+			json.dump(var1, dbfile);
 
 	@staticmethod
 	def find(key, value, db=None):
 		if(db == None):
-			db = DB.load();
+			db = DB.load().db;
 		for entry in db:
 			if entry[key] == int(value):
 				return db.index(entry);
@@ -64,12 +72,15 @@ class DB:
 		return len(db) < 1;
 	
 	def Load(self):
-		self.database = DB.load();
+		dbloaded = DB.load();
+		self.database = dbloaded["db"];
+		self.config = dbloaded["config"];
 		self.lastId = self.Find('i', self.LastIndex());
 		return self;
 
 	def Save(self):
-		DB.save(self.database);
+		print self.database, self.config;
+		DB.save(self.database, self.config);
 		return self;
 
 	def Empty(self):
@@ -83,3 +94,13 @@ class DB:
 
 	def Find(self, key, value):
 		return DB.find(key, value, db=self.database)
+
+	def SetConfig(self, key, value):
+		self.config[key] = value;
+		return True;
+
+	def GetConfig(self, key):
+		try:
+			return self.config[key];
+		except KeyError:
+			print "Error";
