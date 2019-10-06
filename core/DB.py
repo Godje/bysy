@@ -79,7 +79,6 @@ class DB:
 		return self;
 
 	def Save(self):
-		print self.database, self.config;
 		DB.save(self.database, self.config);
 		return self;
 
@@ -104,3 +103,4 @@ class DB:
 			return self.config[key];
 		except KeyError:
 			print "Error";
+			return -1;
