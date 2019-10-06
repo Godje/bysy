@@ -24,6 +24,7 @@ from core.echotime import echotime;
 from core.deleteentry import deleteentry;
 from core.resume import resume;
 from core.configure import configure;
+from core.initialize import initialize;
 
 ## Checking for arguments
 args = sys.argv;
@@ -32,6 +33,8 @@ argLength = len(args);
 def main():
 	def method(m):
 		return {
+				'init':initialize,
+
 				'start': start,
 				'resume': resume,
 

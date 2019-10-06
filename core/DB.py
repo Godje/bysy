@@ -17,7 +17,7 @@ class DB:
 		except: 
 			print "Database doesn't exist.";
 			print "To create a database execute the following shell command:";
-			print "echo \"[]\" > db.json";
+			print "bysy.py init";
 			sys.exit();
 			return 0;
 		return db;
