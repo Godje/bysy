@@ -52,7 +52,10 @@ def main():
 				}[m];
 
 	if( argLength > 1 ):
-		method( args[1].lower() )(args[2:]);
+		try:
+			method( args[1].lower() )(args[2:]);
+		except KeyError:
+			print "\nWrong function. Check out:\n\tbysy.py help\n"
 	else:
 		printhelp(0);
 
