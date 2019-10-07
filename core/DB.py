@@ -102,5 +102,4 @@ class DB:
 		try:
 			return self.config[key];
 		except KeyError:
-			print "Error";
-			return -1;
+			return None;

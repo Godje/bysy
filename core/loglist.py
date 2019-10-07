@@ -14,7 +14,9 @@ def loglist(args):
 	if( argLength == 1 ):
 		reversed_list = reversed_list[ :int(args[0]) ];
 	else:
-		maxentries = configure("get", "listmax");
+		maxentries = configure(["get", "listmax"]);
+		if maxentries == None:
+			maxentries = len(reversed_list);
 		reversed_list = reversed_list[ :int( maxentries ) ]
 	template = """{0} | {1} | {2} | {3} | {4}""";
 	for entry in reversed_list:
