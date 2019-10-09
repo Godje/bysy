@@ -1,7 +1,6 @@
 # Bysy
 #### -read busy
 
-
 Self-management Time logging tool written in Python. Writes to a JSON database, to be later used in self-analysis.
 
 The way you can record and analyse the data is up to you. Although I provide a very simple and
@@ -11,23 +10,28 @@ Clearly inspired by **Log** by Josh Avanier
 
 **Navigation**
 - [Usage](https://github.com/Godje/bysy#usage)
+- [Config](https://github.com/Godje/bysy#confgi)
 - [Entry Structure](https://github.com/Godje/bysy#entry-structure-ideas)
 
 ## Usage
 
 `*` means required input
 
-- **start** | `<sector*, project*, details*, comment>` 
+- **start** 
+	- args: `<sector*, project*, details*, comment>` 
 	- starts a new Bysy entry with those parameters.
-- **stop** 
+- **stop** or **pause**
 	- stops the last entry
-- **delete** | `<id*>` 
+- **delete** 
+	-	`<id*>` 
 	- deletes an entry
-- **list** | `<amount>`
+- **list** or **ls** or **log**
+	-	`<amount>`
 	- lists the `amount` of last entries
 - **time**
 	- tells how much time have you been busy with the last entry
-- **resume** | `<id>`
+- **resume** 
+	-	`<id>`
 	-	resumes the task, or the entry at the `id` you type in. By resuming, means start it again.
 
 **Example commands:**
@@ -50,6 +54,11 @@ $ bysy.py time #time since the Entry #2 started
 ```
 
 Analysing scripts and such will come later after a stable Core is done.
+
+## Config
+
+- **`listmax`** `<Number>`
+	-	Limit the amount of items displayed in the list command. (Useful when you have more entries, than lines in your visible Terminal)
 
 ## Entry Structure ideas
 

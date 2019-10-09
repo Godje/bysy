@@ -6,8 +6,8 @@
 # management
 #
 # Don't be surprised that I have a bunch of Guard conditional statements
-# I use every hack that will make the code look nice and readable, instead
-# of code being performant. 
+# I use every hack that will make the code look nice and readable, 
+# prioritized over minute performance optimizations.
 #
 # It's a very short script that will run each time
 # you execute the command, so the performance and memory consumption don't
