@@ -10,7 +10,7 @@ Clearly inspired by **Log** by Josh Avanier
 
 **Navigation**
 - [Usage](https://github.com/Godje/bysy#usage)
-- [Config](https://github.com/Godje/bysy#confgi)
+- [Config](https://github.com/Godje/bysy#config)
 - [Entry Structure](https://github.com/Godje/bysy#entry-structure-ideas)
 
 ## Usage
