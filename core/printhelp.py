@@ -16,5 +16,9 @@ Available methods:{1}
 	{0}delete{1}\t\t\t- delets a selected log
 	{0}resume{1}\t\t\t- resumes a the last task. Or the task at <id> you specify
 	{0}help{1}\t\t\t- displays this help message
+
+{0}CONFIG{1}
+
+	{0}listmax{1}\t\t\t- (Number) Limits the amount of entries displayed on list command
 		"""
 	print help_string.format(txtmodif.BOLD, txtmodif.NORMAL)
