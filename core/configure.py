@@ -1,5 +1,9 @@
 from DB import DB;
 
+class txtmodif:
+	NORMAL = '\033[0m'
+	BOLD = '\033[1m'
+	WARNING = '\033[91m'
 
 def get(args):
 	db = DB().Load();
@@ -21,6 +25,15 @@ def setvalue(args):
 	db.Save();
 	return None;
 
+def displayhelp(args):
+	output="""
+{0}CONFIG{1}
+
+	{0}listmax{1}\t\t\t- (Number) Limits the amount of entries displayed on list command
+	""";
+
+	print output.format(txtmodif.BOLD, txtmodif.NORMAL);
+
 def configure(args):
 	db = DB().Load();
 	if(len(args[0]) < 1):
@@ -30,7 +43,9 @@ def configure(args):
 		return {
 				'get': get,
 				'list': listconfig,
-				'set': setvalue
+				'set': setvalue,
+				'help': displayhelp
 				}[m];
 	
 	return method(args[0])(args[1:]);
+
