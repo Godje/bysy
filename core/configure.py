@@ -28,16 +28,21 @@ def setvalue(args):
 def displayhelp(args):
 	output="""
 {0}CONFIG{1}
+\t{0}get{1}\t- (Value) Returns the value (for internal/programmging use)
+\t{0}list{1}\t- Lists all the configured values
+\t{0}set{1}\t- (key, value) Set the value
+\t{0}help{1}\t- Display this message
 
-	{0}listmax{1}\t\t\t- (Number) Limits the amount of entries displayed on list command
+{0}VALUES{1}
+\t{0}listmax{1}\t- (Number) Limits the amount of entries displayed on list command
 	""";
 
 	print output.format(txtmodif.BOLD, txtmodif.NORMAL);
 
 def configure(args):
 	db = DB().Load();
-	if(len(args[0]) < 1):
-		print "Not enough arguments;"
+	if(len(args) < 1):
+		print "Not enough arguments"
 		return;
 	def method(m):
 		return {
