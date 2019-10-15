@@ -1,5 +1,9 @@
 from DB import DB;
 
+class txtmodif:
+	NORMAL = '\033[0m'
+	BOLD = '\033[1m'
+	WARNING = '\033[91m'
 
 def get(args):
 	db = DB().Load();
@@ -21,16 +25,32 @@ def setvalue(args):
 	db.Save();
 	return None;
 
+def displayhelp(args):
+	output="""
+{0}CONFIG{1}
+\t{0}get{1}\t- (Value) Returns the value (for internal/programmging use)
+\t{0}list{1}\t- Lists all the configured values
+\t{0}set{1}\t- (key, value) Set the value
+\t{0}help{1}\t- Display this message
+
+{0}VALUES{1}
+\t{0}listmax{1}\t- (Number) Limits the amount of entries displayed on list command
+	""";
+
+	print output.format(txtmodif.BOLD, txtmodif.NORMAL);
+
 def configure(args):
 	db = DB().Load();
-	if(len(args[0]) < 1):
-		print "Not enough arguments;"
+	if(len(args) < 1):
+		displayhelp(args);
 		return;
 	def method(m):
 		return {
 				'get': get,
 				'list': listconfig,
-				'set': setvalue
+				'set': setvalue,
+				'help': displayhelp
 				}[m];
 	
 	return method(args[0])(args[1:]);
+
