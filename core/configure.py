@@ -42,7 +42,7 @@ def displayhelp(args):
 def configure(args):
 	db = DB().Load();
 	if(len(args) < 1):
-		print "Not enough arguments"
+		displayhelp(args);
 		return;
 	def method(m):
 		return {
