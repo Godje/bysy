@@ -94,6 +94,16 @@ class DB:
 	def Find(self, key, value):
 		return DB.find(key, value, db=self.database)
 
+	def SetAlias(self, key, value):
+		self.alias[key] = value;
+		return True;
+
+	def GetAlias(self, key):
+		try:
+			return self.alias[key];
+		except KeyError:
+			return None;
+
 	def SetConfig(self, key, value):
 		self.config[key] = value;
 		return True;
