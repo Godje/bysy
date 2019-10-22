@@ -1,34 +1,42 @@
 from DB import DB;
 from TIME import currentTime;
+from alias import alias;
 
 ## Start function
 def start(args):
 	argLength = len(args);
 
-	if( argLength < 3 ):
+	if(argLength == 2):
 		print "Not enough arguments";
-		return;
 
 	db = DB().Load();
 
-	if( len(db.database) != 0 and db.LastItem()['e'] == "" ):
-		print "There is another Log running at the moment";
+	if( not db.Empty() and db.LastItem()['e'] == "" ):
+		print "There is another entry running at the moment";
 		return;
-
 
 	current_time = currentTime();
 	entry = {
 			'i': db.LastItem()['i'] + 1,
-			's': args[0],
-			'p': args[1],
-			'd': args[2],
 			'c': '',
 			'b': current_time,
 			'e': "",
 			};
 
-	if( argLength == 4 ):
-		entry['c'] = args[3]
+	if( argLength == 1 ):
+		try:
+			e = alias(["get", args[0]]);
+			entry["s"] = e["s"];
+			entry["p"] = e["p"];
+			entry["d"] = e["d"];
+		except TypeError:
+			print "No alias found with name {}".format(args[0]);
+			return;
+	elif( argLength >= 3):
+		entry["s"] = args[0];
+		entry["p"] = args[1];
+		entry["d"] = args[2];
+		entry["c"] = args[3] if argLength == 4 else ""; 
 
 	db.database.append(entry);
 
