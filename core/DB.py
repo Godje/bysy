@@ -7,6 +7,7 @@ dbfilename = "db.json";
 class DB:
 	database = [];
 	config = {};
+	alias = {};
 
 	@staticmethod
 	def load():
@@ -28,9 +29,11 @@ class DB:
 
 		db = args[0] if len(args) > 0 else [];
 		config = args[1] if len(args) > 1 else var1['config'];
+		alias = args[2] if len(args) > 2 else var1['alias'];
 
 		var1['db'] = db;
 		var1['config'] = config;
+		var1['alias'] = alias;
 		with open(dbfilename, 'w') as dbfile:
 			json.dump(var1, dbfile);
 
@@ -75,11 +78,12 @@ class DB:
 		dbloaded = DB.load();
 		self.database = dbloaded["db"];
 		self.config = dbloaded["config"];
+		self.alias = dbloaded["alias"];
 		self.lastId = self.Find('i', self.LastIndex());
 		return self;
 
 	def Save(self):
-		DB.save(self.database, self.config);
+		DB.save(self.database, self.config, self.alias);
 		return self;
 
 	def Empty(self):
@@ -93,6 +97,16 @@ class DB:
 
 	def Find(self, key, value):
 		return DB.find(key, value, db=self.database)
+
+	def SetAlias(self, key, value):
+		self.alias[key] = value;
+		return True;
+
+	def GetAlias(self, key):
+		try:
+			return self.alias[key];
+		except KeyError:
+			return None;
 
 	def SetConfig(self, key, value):
 		self.config[key] = value;
