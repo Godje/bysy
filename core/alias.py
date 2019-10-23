@@ -43,9 +43,9 @@ def listalias(args):
 def printhelp(args):
 	print """
 {0}ALIAS{1}
-\t{0}get{1}\t\t- (value) returns the value (for internal/programmging use)
+\t{0}get{1}\t\t- (key) returns the value (for internal/programmging use)
 \t{0}list{1}\t\t- lists all the configured values
-\t{0}set|create{1}\t- (key, value) set the value
+\t{0}set|create{1}\t- ({0}Name{1}, {0}Sector{1}, {0}Project{1}, {0}Details{1}) set the value
 \t{0}help{1}\t\t- display this message
 	""".format(txtmodif.BOLD, txtmodif.NORMAL);
 	return;

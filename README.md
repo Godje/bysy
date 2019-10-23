@@ -1,10 +1,9 @@
 # Bysy
 #### -read busy
 
-Self-management Time logging tool written in Python. Writes to a JSON database, to be later used in self-analysis.
-
-The way you can record and analyse the data is up to you. Although I provide a very simple and
-effective example at the bottom.
+Self-management Time logging tool written in Python.
+The way you can record and analyse the data is up to you. I provide a very simple and
+effective example at the bottom, but you are free to experiment.
 
 Clearly inspired by **Log** by Josh Avanier
 
@@ -17,24 +16,59 @@ Clearly inspired by **Log** by Josh Avanier
 
 `*` means required input
 
-- **start** 
+- **`start`** 
 	- args: `<sector*, project*, details*, comment>` 
 	- starts a new Bysy entry with those parameters.
-- **stop** or **pause**
+- **`stop`** or **`pause`**
 	- stops the last entry
-- **delete** 
+- **`delete`** 
 	-	`<id*>` 
 	- deletes an entry
-- **list** or **ls** or **log**
+- **`list`** or **`ls`** or **`log`**
 	-	`<amount>`
 	- lists the `amount` of last entries
-- **time**
+- **`time`**
 	- tells how much time have you been busy with the last entry
-- **resume** 
+- **`resume`** 
 	-	`<id>`
 	-	resumes the task, or the entry at the `id` you type in. By resuming, means start it again.
+- **`config`**
+	-	commands: `get`, `list`, `set`, `help`
+	- further commands to change config values
+- **`alias`**
+	-	commands: `get`, `list`, `set`, `help`
+	- further commands to change alias values
 
-**Example commands:**
+
+## Config
+
+- **`get`**
+	- args: `key`
+	-	Internal command that returns the value for the config.
+- **`list`**
+	-	Lists all the configured values.
+- **`set`**
+	- args: `<key>`, `<value>`
+	-	Set the new config value
+
+### Config values
+
+- **`listmax`** `<Number>`
+	-	Limit the amount of items displayed in the list command. (Useful when you have more entries, than lines in your visible Terminal)
+
+## Alias
+
+- **`get`**
+	- args: `key`
+	-	Internal command that returns the value for the alias.
+- **`list`**
+	-	Lists all the configured aliases.
+- **`set|create`**
+	- args: `<key>`, `<value>`
+	-	Set the new config value
+
+#### Example commands
+
 ```
 $ bysy.py start "Dev" "Bysy" "Fixing bugs"
 <output>
@@ -54,11 +88,6 @@ $ bysy.py time #time since the Entry #2 started
 ```
 
 Analysing scripts and such will come later after a stable Core is done.
-
-## Config
-
-- **`listmax`** `<Number>`
-	-	Limit the amount of items displayed in the list command. (Useful when you have more entries, than lines in your visible Terminal)
 
 ## Entry Structure ideas
 

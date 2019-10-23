@@ -57,6 +57,7 @@ def main():
 		try:
 			method( args[1].lower() )(args[2:]);
 		except KeyError:
+			print args[1]
 			print "\nWrong function. Check out:\n\tbysy.py help\n"
 	else:
 		printhelp(0);
