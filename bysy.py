@@ -25,6 +25,7 @@ from core.deleteentry import deleteentry;
 from core.resume import resume;
 from core.configure import configure;
 from core.initialize import initialize;
+from core.alias import alias;
 
 ## Checking for arguments
 args = sys.argv;
@@ -48,13 +49,15 @@ def main():
 				'help': printhelp,
 				'time': echotime,
 				'delete': deleteentry,
-				'config': configure
+				'config': configure,
+				'alias': alias
 				}[m];
 
 	if( argLength > 1 ):
 		try:
 			method( args[1].lower() )(args[2:]);
 		except KeyError:
+			print args[1]
 			print "\nWrong function. Check out:\n\tbysy.py help\n"
 	else:
 		printhelp(0);
