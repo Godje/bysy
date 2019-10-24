@@ -1,8 +1,9 @@
 import sys;
 import json;
+import os.path;
 from operator import itemgetter;
 
-dbfilename = "db.json";
+dbfilename = os.path.dirname(__file__)+"/db.json";
 
 class DB:
 	database = [];
