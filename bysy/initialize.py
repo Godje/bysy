@@ -1,4 +1,5 @@
 from DB import DB;
+import os.path;
 from shutil import copyfile;
 
 def initialize(args):
@@ -13,5 +14,5 @@ def initialize(args):
 		return;
 	else:
 		print "Creating a database";
-		copyfile('template.json', 'db.json');
+		copyfile(os.path.dirname(__file__)+'/template.json', os.path.dirname(__file__)+'/db.json');
 	return 1;
