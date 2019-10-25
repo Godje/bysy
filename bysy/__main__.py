@@ -31,10 +31,16 @@ from alias import alias;
 args = sys.argv;
 argLength = len(args);
 
+def edit(args):
+	import os;
+	os.system("$EDITOR " + os.path.dirname(__file__) + "/db.json");
+	return;
+
 def main():
 	def method(m):
 		return {
 				'init':initialize,
+				'edit':edit,
 
 				'start': start,
 				'resume': resume,
