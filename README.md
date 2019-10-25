@@ -1,5 +1,5 @@
 # Bysy
-#### -read busy
+read busy
 
 Self-management Time logging tool written in Python.
 The way you can record and analyse the data is up to you. I provide a very simple and
@@ -84,20 +84,20 @@ bysy init
 #### Example commands
 
 ```
-$ bysy.py start "Dev" "Bysy" "Fixing bugs"
+$ bysy start "Dev" "Bysy" "Fixing bugs"
 <output>
-$ bysy.py stop
+$ bysy stop
 
-$ bysy.py start "Dev" "Bysy" "Fixing bugs" "finishing up on Issue #3"
+$ bysy start "Dev" "Bysy" "Fixing bugs" "finishing up on Issue #3"
 <output>
 
-$ bysy.py list
+$ bysy list
 2 | Dev | Bysy | Fixing bugs | <start-time> |
 1 | Dev | Bysy | Fixing bugs | <start-time> | <end-time>
 
-$ bysy.py delete 1
+$ bysy delete 1
 
-$ bysy.py time #time since the Entry #2 started
+$ bysy time #time since the Entry #2 started
 0:04:00 
 ```
 
