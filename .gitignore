@@ -3,3 +3,5 @@ db.json
 README.pdf 
 *.pyc
 vimsession.vim
+bysy.egg-info
+dist
