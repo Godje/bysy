@@ -16,16 +16,16 @@
 import sys;
 
 ## Modules
-from core.start import start;
-from core.stop import stop;
-from core.loglist import loglist;
-from core.printhelp import printhelp;
-from core.echotime import echotime;
-from core.deleteentry import deleteentry;
-from core.resume import resume;
-from core.configure import configure;
-from core.initialize import initialize;
-from core.alias import alias;
+from start import start;
+from stop import stop;
+from loglist import loglist;
+from printhelp import printhelp;
+from echotime import echotime;
+from deleteentry import deleteentry;
+from resume import resume;
+from configure import configure;
+from initialize import initialize;
+from alias import alias;
 
 ## Checking for arguments
 args = sys.argv;
@@ -61,5 +61,3 @@ def main():
 			print "\nWrong function. Check out:\n\tbysy.py help\n"
 	else:
 		printhelp(0);
-
-main();
