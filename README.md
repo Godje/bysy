@@ -8,10 +8,23 @@ effective example at the bottom, but you are free to experiment.
 Clearly inspired by **Log** by Josh Avanier
 
 **Navigation**
+- [Installation](https://github.com/Godje/bysy#installation)
 - [Usage](https://github.com/Godje/bysy#usage)
 - [Config](https://github.com/Godje/bysy#config)
 - [Alias](https://github.com/Godje/bysy#alias)
 - [Entry Structure](https://github.com/Godje/bysy#entry-structure-ideas)
+
+## Installation
+
+```
+# clone and install
+git clone https://github.com/Godje/bysy
+cd bysy
+pip install .
+
+# init
+bysy init
+```
 
 ## Usage
 
