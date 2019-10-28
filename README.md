@@ -1,6 +1,7 @@
 # Bysy
 read busy
 
+![Screenshot](https://raw.githubusercontent.com/Godje/bysy/master/image.png)
 Self-management Time logging tool written in Python.
 The way you can record and analyse the data is up to you. I provide a very simple and
 effective example at the bottom, but you are free to experiment.
