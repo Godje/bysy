@@ -16,6 +16,7 @@ Available methods:{1}
 \t{0}resume{1}\t\t- resumes a the last task. Or the task at <id> you specify
 \t{0}config{1}\t\t- manage configuration
 \t{0}help{1}\t\t- displays this help message
+\t{0}edit{1}\t\t- opens the database file in $EDITOR
 \t{0}config{1}\t\t- (further command) displays this help message
 \t{0}alias{1}\t\t- (further command) displays this help message
 

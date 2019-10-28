@@ -3,7 +3,7 @@ import bysy;
 
 setup(
 		name="bysy",
-		version="0.3",
+		version="0.7",
 		description="Self-management time logging tool",
 		url="https://github.com/Godje/bysy",
 		author="Daniel Mayovskiy",
