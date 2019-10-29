@@ -11,8 +11,17 @@ def loglist(args):
 		print "Database is empty";
 		return;
 	reversed_list = db.database[::-1];
+
 	if( argLength == 1 ):
-		reversed_list = reversed_list[ :int(args[0]) ];
+		try:
+			display_amount = int(args[0]);
+		except ValueError:
+			if(args[0] == "all"):
+				display_amount = int(10000); # that's a dumb one, but still
+			else:
+				print "Undefined amount";
+				return;
+		reversed_list = reversed_list[ :display_amount ];
 	else:
 		maxentries = configure(["get", "listmax"]);
 		if maxentries == None:
