@@ -33,7 +33,11 @@ argLength = len(args);
 
 def edit(args):
 	import os;
-	os.system("$EDITOR " + os.path.dirname(__file__) + "/db.json");
+	if(os.environ["EDITOR"] == ""):
+		print "$EDITOR environment variable is not defined";
+		return;
+	else:
+		os.system("$EDITOR " + os.path.dirname(__file__) + "/db.json");
 	return;
 
 def main():
