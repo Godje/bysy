@@ -33,7 +33,7 @@ argLength = len(args);
 
 def edit(args):
 	import os;
-	if(os.environ["EDITOR"] == ""):
+	if( len(os.environ.get("EDITOR")) == 0 or os.getenv("EDITOR", True) ):
 		print "$EDITOR environment variable is not defined";
 		return;
 	else:
