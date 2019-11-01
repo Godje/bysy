@@ -16,16 +16,7 @@
 import sys;
 
 ## Modules
-from start import start;
-from stop import stop;
-from loglist import loglist;
 from printhelp import printhelp;
-from echotime import echotime;
-from deleteentry import deleteentry;
-from resume import resume;
-from configure import configure;
-from initialize import initialize;
-from alias import alias;
 
 ## Checking for arguments
 args = sys.argv;
@@ -41,30 +32,40 @@ def edit(args):
 	return;
 
 def main():
-	def method(m):
-		return {
-				'init':initialize,
-				'edit':edit,
-
-				'start': start,
-				'resume': resume,
-
-				'pause': stop,
-				'stop': stop,
-
-				'list': loglist,
-				'ls': loglist,
-				'log': loglist,
-
-				'help': printhelp,
-				'time': echotime,
-				'delete': deleteentry,
-				'config': configure,
-				'alias': alias
-				}[m];
-
 	if( argLength > 1 ):
 		try:
+			from start import start;
+			from stop import stop;
+			from loglist import loglist;
+			from echotime import echotime;
+			from deleteentry import deleteentry;
+			from resume import resume;
+			from configure import configure;
+			from initialize import initialize;
+			from alias import alias;
+
+			def method(m):
+				return {
+						'init':initialize,
+						'edit':edit,
+
+						'start': start,
+						'resume': resume,
+
+						'pause': stop,
+						'stop': stop,
+
+						'list': loglist,
+						'ls': loglist,
+						'log': loglist,
+
+						'help': printhelp,
+						'time': echotime,
+						'delete': deleteentry,
+						'config': configure,
+						'alias': alias
+						}[m];
+
 			method( args[1].lower() )(args[2:]);
 		except KeyError:
 			print args[1]
