@@ -2,11 +2,9 @@
 ![Version](https://img.shields.io/badge/version-0.8.3-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/Godje/bysy/wiki)
 [![License: MPL--2.0](https://img.shields.io/badge/License-MPL--2.0-yellow.svg)](https://github.com/Godje/bysy/blob/master/LICENSE)
-[![Twitter: danielmayovskiy](https://img.shields.io/twitter/follow/danielmayovskiy.svg?style=social)](https://twitter.com/danielmayovskiy)
+[![Twitter: danielmayovsky](https://img.shields.io/twitter/follow/danielmayovsky.svg?style=social)](https://twitter.com/danielmayovsky)
 
 > Self-management time logging tool
-
-### 🏠 [Homepage](https://github.com/Godje/bysy)
 
 ## Install
 
@@ -24,8 +22,8 @@ bysy help
 
 👤 **Daniel Mayovskiy**
 
-* Website: https://godje.github.io
-* Twitter: [@danielmayovskiy](https://twitter.com/danielmayovskiy)
+* Website: https://danielmayovskiy.com
+* Twitter: [@danielmayovskiy](https://twitter.com/DanielMayovsky)
 * Github: [@godje](https://github.com/godje)
 
 ## 🤝 Contributing
