@@ -6,6 +6,25 @@
 
 > Self-management time logging tool
 
+This is a manual tool for recording the activities you are busy with, to later analyze the data and see your habits, or anything you would like to do with the data. When you have the data on your time spending, the sky is the limit of what you see from it. This tool is just an opinionated helper on recording that data.
+
+You mark the start and the end of a particular activity, and the `alias` or other commands are only there to make the marking of start of the activity easier.
+
+The data entry has a following structure and recorded in JSON:
+
+```
+entry:
+	s (sector): String, manual, required
+	p (project): String, manual, required
+	d (details): String, manual, required
+	c (comments): String, manual, not required 
+	s (start_date): Date, auto
+	e (end_date): Date, auto
+	i (id): Integer, auto
+```
+
+The commands are later explained in concise detail in the `help` command
+
 ## Install
 
 ```sh
