@@ -7,7 +7,6 @@ dbfilename = os.path.dirname(__file__)+"/db.json";
 
 class DB:
 	database = [];
-	config = {};
 	alias = {};
 
 	@staticmethod
@@ -29,11 +28,9 @@ class DB:
 		var1 = DB.load();
 
 		db = args[0] if len(args) > 0 else [];
-		config = args[1] if len(args) > 1 else var1['config'];
-		alias = args[2] if len(args) > 2 else var1['alias'];
+		alias = args[1] if len(args) > 1 else var1['alias'];
 
 		var1['db'] = db;
-		var1['config'] = config;
 		var1['alias'] = alias;
 		with open(dbfilename, 'w') as dbfile:
 			json.dump(var1, dbfile);
@@ -78,13 +75,12 @@ class DB:
 	def Load(self):
 		dbloaded = DB.load();
 		self.database = dbloaded["db"];
-		self.config = dbloaded["config"];
 		self.alias = dbloaded["alias"];
 		self.lastId = self.Find('i', self.LastIndex());
 		return self;
 
 	def Save(self):
-		DB.save(self.database, self.config, self.alias);
+		DB.save(self.database, self.alias);
 		return self;
 
 	def Empty(self):

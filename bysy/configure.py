@@ -1,31 +1,48 @@
-from DB import DB;
+import os.path;
+import sys;
 
 class txtmodif:
 	NORMAL = '\033[0m'
 	BOLD = '\033[1m'
 	WARNING = '\033[91m'
 
-def get(args):
-	db = DB().Load();
-	return db.GetConfig(args[0]);
+cfgfilename = os.path.dirname(__file__)+"/config.json";
 
-def listconfig(args):
-	db = DB().Load();
-	for obj in db.config:
-		print "{0} = {1}".format(obj, db.config[obj]);
-	return None;
+class Config:
+	config = {};
 
-def setvalue(args):
-	print args;
-	if(len(args) < 2):
-		print "Not enough arguments!";
+	def Load(self):
+		try:
+			with open(cfgfilename) as cfgfile:
+				cfg = json.loads(cfgfile.read());
+		except: 
+			print "Error opening the config file. \nThis is a bug";
+			sys.exit();
+			return;
+	
+	def Save(self):
+		with open(cfgfilename, 'w') as cfgfile:
+			json.dump(config, cfgfile);
+
+	def Get(self, key):
+		value = None;
+		try:
+			value = self.config[key];
+		except KeyError:
+			print "No value configured for this key";
+		return None;
+
+	def List(self):
+		for entry in self.config:
+			print "{0} = {1}".format(entry, self.config[entry])
 		return;
-	db = DB().Load();
-	db.SetConfig(args[0], args[1]);
-	db.Save();
-	return None;
+	
+	def Set(self, key, value):
+		self.config[key] = value;
+		self.Save();
+		return;
 
-def displayhelp(args):
+def printhelp(args):
 	output="""
 {0}CONFIG{1}
 \t{0}get{1}\t- (Value) Returns the value (for internal/programmging use)
@@ -39,17 +56,28 @@ def displayhelp(args):
 
 	print output.format(txtmodif.BOLD, txtmodif.NORMAL);
 
+def setvalue(*args):
+	config = Config().Load();
+	config.Save( args[0], args[1] )
+
+def listconfig(*args):
+	config = Config().Load();
+	config.List();
+
+def get(key):
+	config = Config().Load();
+	return config.Get(key);
+
 def configure(args):
-	db = DB().Load();
 	if(len(args) < 1):
-		displayhelp(args);
+		print(args);
 		return;
 	def method(m):
 		return {
 				'get': get,
 				'list': listconfig,
 				'set': setvalue,
-				'help': displayhelp
+				'help': printhelp
 				}[m];
 	
 	return method(args[0])(args[1:]);
