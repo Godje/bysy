@@ -1,2 +1,3 @@
 include README.md
 include bysy/template.json
+include bysy/config.json

@@ -1,4 +1,5 @@
 import os.path;
+import json;
 import sys;
 
 class txtmodif:
@@ -14,11 +15,11 @@ class Config:
 	def Load(self):
 		try:
 			with open(cfgfilename) as cfgfile:
-				cfg = json.loads(cfgfile.read());
+				self.config = json.loads(cfgfile.read());
+			return self;
 		except: 
 			print "Error opening the config file. \nThis is a bug";
 			sys.exit();
-			return;
 	
 	def Save(self):
 		with open(cfgfilename, 'w') as cfgfile:
@@ -27,12 +28,14 @@ class Config:
 	def Get(self, key):
 		value = None;
 		try:
-			value = self.config[key];
+			value = self.config[key[0]];
+			return value;
 		except KeyError:
 			print "No value configured for this key";
 		return None;
 
 	def List(self):
+		print "yeehaw";
 		for entry in self.config:
 			print "{0} = {1}".format(entry, self.config[entry])
 		return;
@@ -65,7 +68,8 @@ def listconfig(*args):
 	config.List();
 
 def get(key):
-	config = Config().Load();
+	config = Config();
+	config.Load();
 	return config.Get(key);
 
 def configure(args):
