@@ -23,19 +23,20 @@ class Config:
 	
 	def Save(self):
 		with open(cfgfilename, 'w') as cfgfile:
-			json.dump(config, cfgfile);
+			json.dump(self.config, cfgfile);
 
 	def Get(self, key):
 		value = None;
 		try:
 			value = self.config[key[0]];
 			return value;
+		except IndexError:
+			print "No key specified";
 		except KeyError:
 			print "No value configured for this key";
 		return None;
 
 	def List(self):
-		print "yeehaw";
 		for entry in self.config:
 			print "{0} = {1}".format(entry, self.config[entry])
 		return;
@@ -60,8 +61,13 @@ def printhelp(args):
 	print output.format(txtmodif.BOLD, txtmodif.NORMAL);
 
 def setvalue(*args):
-	config = Config().Load();
-	config.Save( args[0], args[1] )
+	config = Config()
+	config.Load();
+	try:
+		config.Set( args[0][0], args[0][1] )
+	except IndexError:
+		print "No key or value specified";
+		return;
 
 def listconfig(*args):
 	config = Config().Load();
@@ -74,7 +80,7 @@ def get(key):
 
 def configure(args):
 	if(len(args) < 1):
-		print(args);
+		printhelp(args);
 		return;
 	def method(m):
 		return {
@@ -85,4 +91,3 @@ def configure(args):
 				}[m];
 	
 	return method(args[0])(args[1:]);
-
