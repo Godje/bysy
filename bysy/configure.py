@@ -31,9 +31,9 @@ class Config:
 			value = self.config[key[0]];
 			return value;
 		except IndexError:
-			print "No key specified";
+			raise ValueError("No key specified");
 		except KeyError:
-			print "No value configured for this key";
+			raise ValueError("No value configured for this key");
 		return None;
 
 	def List(self):
@@ -76,7 +76,10 @@ def listconfig(*args):
 def get(key):
 	config = Config();
 	config.Load();
-	return config.Get(key);
+	try:
+		return config.Get(key)
+	except:
+		return None;
 
 def configure(args):
 	if(len(args) < 1):

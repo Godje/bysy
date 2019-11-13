@@ -2,8 +2,17 @@ import sys;
 import json;
 import os.path;
 from operator import itemgetter;
+from configure import configure;
 
-dbfilename = os.path.dirname(__file__)+"/db.json";
+def dbfilename():
+	try:
+		output = configure(["get", "db_location"]);
+		if( output == None ):
+			raise ValueError();
+		else:
+			return output;
+	except:
+		return os.path.dirname(__file__)+"/db.json";
 
 class DB:
 	database = [];
@@ -13,9 +22,9 @@ class DB:
 	def load():
 		db = [];
 		try:
-			with open(dbfilename) as dbfile:
+			with open( dbfilename() ) as dbfile:
 				db = json.loads(dbfile.read());
-		except: 
+		except ValueError: 
 			print "Database doesn't exist.";
 			print "To create a database execute the following shell command:";
 			print "bysy.py init";
@@ -32,7 +41,7 @@ class DB:
 
 		var1['db'] = db;
 		var1['alias'] = alias;
-		with open(dbfilename, 'w') as dbfile:
+		with open(dbfilename(), 'w') as dbfile:
 			json.dump(var1, dbfile);
 
 	@staticmethod
