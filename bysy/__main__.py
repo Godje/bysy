@@ -26,11 +26,12 @@ class txtmodif:
 
 def edit(args):
 	import os;
+	from DB import dbfilename;
 	if( len(os.environ.get("EDITOR")) == 0 or os.getenv("EDITOR", True) == True):
 		print "$EDITOR environment variable is not defined";
 		return;
 	else:
-		os.system("$EDITOR " + os.path.dirname(__file__) + "/db.json");
+		os.system("$EDITOR " + dbfilename());
 	return;
 
 def printhelp(args):
