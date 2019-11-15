@@ -55,7 +55,8 @@ def printhelp(args):
 \t{0}help{1}\t- Display this message
 
 {0}VALUES{1}
-\t{0}listmax{1}\t- (Number) Limits the amount of entries displayed on list command
+\t{0}listmax{1}\t\t- (Number) Limits the amount of entries displayed on list command
+\t{0}db_location{1}\t- (Path) Location of the database JSON file, if you have a custom one
 	""";
 
 	print output.format(txtmodif.BOLD, txtmodif.NORMAL);
