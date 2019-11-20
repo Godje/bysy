@@ -1,18 +1,5 @@
 #!/usr/bin/python
 
-# Author: Daniel Mayovskiy
-#
-# Literally my first Python program, so don't be surprised for noob memory
-# management
-#
-# Don't be surprised that I have a bunch of Guard conditional statements
-# I use every hack that will make the code look nice and readable, 
-# prioritized over minute performance optimizations.
-#
-# It's a very short script that will run each time
-# you execute the command, so the performance and memory consumption don't
-# really matter here
-
 import sys;
 
 ## Checking for arguments
