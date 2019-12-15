@@ -30,12 +30,17 @@ The commands are later explained in concise detail in the `help` command
 ```sh
 pip install bysy
 ```
+or [install from source](https://github.com/Godje/bysy/wiki/Install-from-source)
 
 ## Usage
 
 ```sh
 bysy help
 ```
+
+### Wiki
+
+https://github.com/Godje/bysy/wiki
 
 ## Author
 
