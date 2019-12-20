@@ -2,26 +2,19 @@ import bysy;
 
 import codecs;
 import os;
-import re;
 import sys;
 
 from setuptools import find_packages, setup;
 
-here = os.path.abspath(os.path.dirname(__file__))
-
-def read(*parts):
-    # intentionally *not* adding an encoding option to open, See:
-    #   https://github.com/pypa/virtualenv/issues/201#issuecomment-3145690
-    with codecs.open(os.path.join(here, *parts), 'r') as fp:
-        return fp.read()
-
-long_description = read('README.rst');
+with open("README.md", "r") as fh:
+	long_description = fh.read();
 
 setup(
 		name="bysy",
 		version="1.0",
 		description="Self-management time logging tool",
 		long_description=long_description,
+		long_description_content_type="text/markdown",
 		url="https://github.com/Godje/bysy",
 		author="Daniel Mayovskiy",
 		author_email="daniel.mayovskiy@gmail.com",
@@ -32,11 +25,11 @@ setup(
 		entry_points={"console_scripts": ["bysy=bysy.__main__:main"]},
 		include_package_data=True,
 		classifiers=[
-			"Development Status :: 4 - Beta",
+			"Development Status :: 5 - Production/Stable",
 			"Environment :: Console",
 			"Intended Audience :: Developers",
-			"License :: Mozilla Public License 2.0",
-			"Programming Language :: Python :: 2.7.15",
-			"Topic :: Time Tracking"
+			# "License :: Mozilla Public License 2.0 (MPL 2.0)",
+			"Programming Language :: Python :: 2.7",
+			"Topic :: Utilities"
 			]
 		);
