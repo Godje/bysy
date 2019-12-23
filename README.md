@@ -1,5 +1,5 @@
 # Welcome to bysy 👋
-![Version](https://img.shields.io/badge/version-0.9.2-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.1-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/Godje/bysy/wiki)
 [![License: MPL--2.0](https://img.shields.io/badge/License-MPL--2.0-yellow.svg)](https://github.com/Godje/bysy/blob/master/LICENSE)
 [![Twitter: danielmayovsky](https://img.shields.io/twitter/follow/danielmayovsky.svg?style=social)](https://twitter.com/danielmayovsky)

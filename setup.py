@@ -11,7 +11,7 @@ with open("README.md", "r") as fh:
 
 setup(
 		name="bysy",
-		version="1.0",
+		version="1.1",
 		description="Self-management time logging tool",
 		long_description=long_description,
 		long_description_content_type="text/markdown",

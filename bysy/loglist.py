@@ -16,7 +16,7 @@ def loglist(args):
 		try:
 			display_amount = int(args[0]);
 		except ValueError:
-			if(args[0] == "all"):
+			if(args[0] == "all" or args[0] == "csv"):
 				display_amount = int(10000); # that's a dumb one, but still
 			else:
 				print "Undefined amount";
@@ -27,7 +27,10 @@ def loglist(args):
 		if maxentries == None:
 			maxentries = len(reversed_list);
 		reversed_list = reversed_list[ :int( maxentries ) ]
-	template = """{0} | {1} | {2} | {3} | {4}""";
+	if(args[0] == "csv"):
+		template = """{0},{1},{2},{3},{4}""";
+	else:
+		template = """{0} | {1} | {2} | {3} | {4}""";
 	for entry in reversed_list:
 		print template.format(
 				entry['i'],
