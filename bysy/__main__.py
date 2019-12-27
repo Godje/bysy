@@ -28,6 +28,7 @@ Available methods:{1}
 \t{0}start{1}\t\t- ({0}Sector{1}, {0}Project{1}, {0}Description{1}) starts a new Log
 \t{0}stop|pause{1}\t- stops the last log
 \t{0}list|ls|log{1}\t- lists logs
+\t\t{0}csv|all|number{1}\t- amount or style of list display
 \t{0}time{1}\t\t- tells how much time has passed since the last log
 \t{0}delete{1}\t\t- deletes a selected log
 \t{0}resume{1}\t\t- resumes a the last task. Or the task at <id> you specify
