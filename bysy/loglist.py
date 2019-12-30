@@ -13,11 +13,16 @@ def loglist(args):
 	reversed_list = db.database[::-1];
 
 	if( argLength == 1 ):
+		template = """{0} | {1} | {2} | {3} | {4}""";
+
 		try:
 			display_amount = int(args[0]);
 		except ValueError:
-			if(args[0] == "all" or args[0] == "csv"):
+			if(args[0] == "all"):
 				display_amount = int(10000); # that's a dumb one, but still
+			elif(args[0] == "csv"):
+				display_amount = int(10000);
+				template = """{0},{1},{2},{3},{4}""";
 			else:
 				print "Undefined amount";
 				return;
@@ -27,10 +32,6 @@ def loglist(args):
 		if maxentries == None:
 			maxentries = len(reversed_list);
 		reversed_list = reversed_list[ :int( maxentries ) ]
-	if(args[0] == "csv"):
-		template = """{0},{1},{2},{3},{4}""";
-	else:
-		template = """{0} | {1} | {2} | {3} | {4}""";
 	for entry in reversed_list:
 		print template.format(
 				entry['i'],
