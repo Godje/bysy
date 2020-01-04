@@ -12,12 +12,13 @@ def loglist(args):
 		return;
 	reversed_list = db.database[::-1];
 
+	template = """{0} | {1} | {2} | {3} | {4}""";
 	if( argLength == 1 ):
 		template = """{0} | {1} | {2} | {3} | {4}""";
 
 		try:
 			display_amount = int(args[0]);
-		except ValueError:
+		except (ValueError, IndexError):
 			if(args[0] == "all"):
 				display_amount = int(10000); # that's a dumb one, but still
 			elif(args[0] == "csv"):
