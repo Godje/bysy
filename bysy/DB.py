@@ -24,7 +24,7 @@ class DB:
 		try:
 			with open( dbfilename() ) as dbfile:
 				db = json.loads(dbfile.read());
-		except ValueError: 
+		except IOError: 
 			print "Database doesn't exist.";
 			print "To create a database execute the following shell command:";
 			print "bysy.py init";
